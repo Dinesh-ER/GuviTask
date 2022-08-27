@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 import pymongo
@@ -8,7 +9,11 @@ client = pymongo.MongoClient(config("HOST"))
 db = client['GuviTaskDB']['users']
 
 def home(request):
-    return render(request, "home.html")
+    if request.session.get("auth"):
+        return redirect('profile', username=request.session.get("username"))
+        
+    return render(request, 'home.html')
+
 
 def register(request):
     if request.method == 'POST':       
@@ -32,6 +37,27 @@ def login(request):
         if check_password(password, stored_password):
             request.session['auth'] = True
             request.session['username'] = username
-            return redirect('register')
+            return redirect('profile')
         
     return render(request, 'login.html')
+
+
+def profile(request, username):
+    if not request.session.get("auth"):
+        return redirect('home')
+    
+    data = Users.objects.get(username=username)
+    
+    context = {
+        "userData": {
+            "username": data.username,
+            "email": data.email,
+            "contact": data.contact,
+            "dob": data.dob,
+            "age": data.age,
+            "country": data.country
+        }
+    }
+    
+    return render(request, 'profile.html', context)
+    
