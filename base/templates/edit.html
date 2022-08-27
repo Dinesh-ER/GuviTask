@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block scripts %}
+<script>
+	const userData = JSON.parse("{{userData|escapejs}}".replaceAll("\'", "\"").replaceAll("None", null));
+	console.log(userData)
+
+	const form = document.querySelector("#form")
+	const cancel = document.querySelector("#cancel")
+	form.action = window.location.href.replace("edit/", "") + "save/"
+	cancel.href = window.location.href.replace("edit/", "")
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+	<div class="card">
+		<form id="form" method="POST">
+			{% csrf_token %}
+			Username: <input type="text" name="username">
+			Email: <input type="email" name="email">
+			Contact: <input type="text" name="contact">
+			DOB: <input type="date" name="dob">
+			Country: <input type="text" name="country">
+			<a id="cancel">Cancel</a>
+			<button type="submit">Save</button>
+		</form>
+	</div>
+	<a href="/logout/"></a>
+</div>
+{% endblock %}
