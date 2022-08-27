@@ -1,0 +1,18 @@
+# Visual Studio Code
+.vscode/
+
+# SCSS
+*.css.map
+
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+
+# Django
+.env
+staticfiles/
+
+# Other
+temp/
