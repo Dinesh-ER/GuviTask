@@ -6,7 +6,7 @@
 {% block content %}
 <div class="content">
 	<h1>Register</h1>
-	<form id="form" method="post">
+	<form id="form" action="/register/" method="post">
 		{% csrf_token %}
 		Username: <input type="text" name="username">
 		Email: <input type="email" name="email">
@@ -14,20 +14,4 @@
 		<button type="submit">Submit</button>
 	</form>
 </div>
-{% endblock %}
-
-
-{% block scripts %}
-<script>
-	const form = document.getElementById('form');
-	
-	form.addEventListener('submit', function(e) {
-		e.preventDefault();
-		const payload = new FormData(form);
-		fetch(window.location.href, {
-		method: 'POST',
-		body: payload,
-		})
-	})
-</script>
 {% endblock %}
