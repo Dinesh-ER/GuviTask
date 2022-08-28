@@ -61,8 +61,29 @@ const validate = (name) => {
 submitBtn.addEventListener("click", (e) => {
 	e.preventDefault();
 
-	const res = ['name', 'email', 'password'].every(validate)
+	const res = ['username', 'email', 'password'].every(validate)
 	if (!res) return;
 
-	form.submit()
+	let data = new FormData(form);
+
+	fetch(url, {
+		method: "post",
+		body: data,
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			const element = document.forms[0]["username"];
+			if (data.status) {
+				element.style.borderBottom = "2px solid #ff6666";
+				element.nextElementSibling.style.color = "#ff6666";
+				const warning = element.parentNode.querySelector(".register__form__input__warning");
+				warning.style.visibility = "visible";
+				warning.textContent = "The username is already taken";
+			} else {
+				form.submit();
+			}
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 });
