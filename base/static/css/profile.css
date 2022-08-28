@@ -1,0 +1,98 @@
+.content {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  order: 1;
+}
+.hero img {
+  height: 31.25rem;
+  width: 31.25rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0rem;
+  gap: 3rem;
+  order: 2;
+  color: var(--primary-600);
+}
+.main .profile {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.main .profile__photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.main .profile__photo {
+  overflow: hidden;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+}
+.main .profile__photo img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main .profile__details {
+  line-height: 2.5rem;
+  color: var(--primary-600);
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+.main .profile__details div {
+  display: flex;
+}
+.main .profile__details div strong {
+  width: 10rem;
+  color: var(--color-text-100);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  margin: 1rem;
+}
+.logout button:hover {
+  background: var(--warning-300);
+  color: #fff;
+  border: none;
+}
+
+button {
+  outline: none;
+  text-transform: uppercase;
+  background: #fff;
+  width: 12.5rem;
+  height: 3.125rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--primary-300);
+  color: var(--primary-500);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background: #000;
+  color: #fff;
+}

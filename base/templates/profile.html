@@ -1,26 +1,28 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %} Home {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/profile.css'%}">
+{% endblock %}
 
 {% block scripts %}
 <script>
 	const userData = JSON.parse("{{userData|escapejs}}".replaceAll("\'", "\"").replaceAll("None", null));
-	console.log(userData)
 </script>
+
+<script src="{% static 'js/profile.js'%}"></script>
 {% endblock %}
 
 {% block content %}
 <div class="content">
-	<div class="card">
-		<img src="" alt="" srcset="">
-		<p class="username"></p>
-		<p class="email"></p>
-		<p class="contact"></p>
-		<p class="dob"></p>
-		<p class="age"></p>
-		<p class="country"></p>
-		<a href="/edit/">Edit Profile</a>
+	<div class="hero">
+		<img src="{% static 'assets/images/profile.svg' %}" alt="Hero Image">
 	</div>
-	<a href="/logout/"></a>
+	<div class="main">
+		
+	</div>
+	<a href="{% url 'logout' %}" class="logout"><button>Logout</button></a>
 </div>
 {% endblock %}
