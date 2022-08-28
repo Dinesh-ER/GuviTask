@@ -1,17 +1,43 @@
 {% extends 'main.html' %}
+{% load static%}
 
 {% block title %} Home {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
+{% endblock %}
 
 
 {% block content %}
 <div class="content">
-	<h1>Register</h1>
-	<form id="form" action="/register/" method="post">
-		{% csrf_token %}
-		Username: <input type="text" name="username">
-		Email: <input type="email" name="email">
-		Password: <input type="password" name="password">
-		<button type="submit">Submit</button>
-	</form>
+	<div class="hero">
+		<img src="../static/assets/images/register.svg" alt="Hero Image">
+	</div>
+	<div class="main">
+		<h1 class="main__title">Register</h1>
+		<form class="register__form" id="register" action="{% url 'register' %}" method="POST">
+			{% csrf_token %}
+			<div class="register__form__input">
+				<span class="register__form__input__warning"></span>
+				<input type="text" name="name" class="register__form__input__field" autocomplete="off" required />
+				<label class="register__form__input__label">Full Name</label>
+			</div>
+			<div class="register__form__input">
+				<span class="register__form__input__warning"></span>
+				<input type="text" name="email" class="register__form__input__field" autocomplete="off" required />
+				<label class="register__form__input__label">Email</label>
+			</div>
+			<div class="register__form__input">
+				<span class="register__form__input__warning"></span>
+				<input type="password" name="password" class="register__form__input__field" autocomplete="off"
+					required />
+				<label class="register__form__input__label">Password</label>
+			</div>
+			<div class="register__form__submit-wrap">
+				<button type="submit" class="register__form__submit">Submit</button>
+			</div>
+			<p class="register__form__redirection">Already have an account?<a href="{% url 'login' %}"> Login</a></p>
+		</form>
+	</div>
 </div>
 {% endblock %}
