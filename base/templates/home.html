@@ -1,12 +1,24 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %} Home {% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+{% endblock %}
 
 {% block content %}
 <div class="content">
-	<h1>GUVI RECRUITMENT TASK</h1>
-	<a href="/register/">Register</a>
-	<a href="/login/">Login</a>
+	<div class="hero">
+		<img src="../static/assets/images/home.svg" alt="Hero Image">
+	</div>
+	<div class="main">
+		<h1 class="main__title">Guvi Recruitment Task</h1>
+		<div class="main__links">
+			<a href="{% url 'register' %}"><button class="main__links__register">Register</button></a>
+			<a href="{% url 'login' %}"><button class="main__links__login">Login</button></a>
+		</div>
+	</div>
+	<p class="credit">Made by Nishanth R J</p>
 </div>
 {% endblock %}
