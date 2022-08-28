@@ -9,6 +9,10 @@
 
 {% block scripts %}
 <script src="{% static 'js/register.js'%}"></script>
+
+<script>
+	const url = "{% url 'register_check' %}";
+</script>
 {% endblock %}
 
 
@@ -23,8 +27,8 @@
 			{% csrf_token %}
 			<div class="register__form__input">
 				<span class="register__form__input__warning"></span>
-				<input type="text" name="name" class="register__form__input__field" autocomplete="off" required />
-				<label class="register__form__input__label">Full Name</label>
+				<input type="text" name="username" class="register__form__input__field" autocomplete="off" required />
+				<label class="register__form__input__label">Username</label>
 			</div>
 			<div class="register__form__input">
 				<span class="register__form__input__warning"></span>
