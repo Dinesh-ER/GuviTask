@@ -17,9 +17,13 @@ def home(request):
 def register(request):
     if request.method == 'POST':       
         content = {
-            'username': request.POST['username'],
+            'username': request.POST['name'],
             'email': request.POST['email'],
-            'password': make_password(request.POST['password'])
+            'password': make_password(request.POST['password']),
+            'contact': '',
+            'dob': '',
+            'age': None,
+            'country': ''
         }
         db.insert_one(content)
         return redirect('login')  
