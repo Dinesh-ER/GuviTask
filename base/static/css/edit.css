@@ -110,6 +110,10 @@
   height: 15rem;
   width: 15rem;
   border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .profile__photo img {
   display: block;
@@ -117,4 +121,17 @@
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: all 0.25s;
+}
+.profile__photo img:hover {
+  cursor: pointer;
+}
+.profile__photo__edit {
+  display: none;
+  position: absolute;
+  font-size: 1.25rem;
+  color: #fff;
+}
+.profile__photo__edit:hover {
+  cursor: pointer;
 }

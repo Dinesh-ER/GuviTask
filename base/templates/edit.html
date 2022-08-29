@@ -23,11 +23,13 @@
 		<div class="profile__photo-wrap">
 			<div class="profile__photo">
 				<img src="{% static 'assets/images/profile.jpg' %}" alt="">
+				<p class="profile__photo__edit">Change Photo</p>
 			</div>
 			<p class="profile__username">Carbine</p>
 		</div>
-		<form class="edit__form" id="edit" method="POST">
+		<form class="edit__form" id="edit" method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
+			<input type="file" name="photo" id="photo-field" class="edit__form__input__field" hidden/>
 			<div class="edit__form__input">
 				<span class="edit__form__input__warning"></span>
 				<input type="email" name="email" class="edit__form__input__field" autocomplete="off" required />
