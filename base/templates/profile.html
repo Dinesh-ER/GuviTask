@@ -21,8 +21,16 @@
 		<img src="{% static 'assets/images/profile.svg' %}" alt="Hero Image">
 	</div>
 	<div class="main">
-		
+		<div class="profile">
+			<div class="profile__photo-wrap">
+				<div class="profile__photo">
+					<img src="data:image/png;base64, {{photo}}" alt="">
+				</div>
+				<p class="profile__username"></p>
+			</div>
+		</div>
+		<a class="edit-profile-btn"><button>Edit profile</button></a>
 	</div>
-	<a href="{% url 'logout' %}" class="logout"><button>Logout</button></a>
-</div>
-{% endblock %}
+		<a href="{% url 'logout' %}" class="logout"><button>Logout</button></a>
+	</div>
+	{% endblock %}

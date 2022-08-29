@@ -1,15 +1,14 @@
-const container = document.querySelector(".main");
+const container = document.querySelector(".profile");
+
+
+const usernameField = document.querySelector(".profile__username")
+usernameField.textContent = userData.username
+
+document.querySelector(".edit-profile-btn").href = window.location.href + "edit/"
 
 container.insertAdjacentHTML(
 	"beforeend",
 	`
-	<div class="profile">
-	<div class="profile__photo-wrap">
-		<div class="profile__photo">
-			<img src="{% static 'assets/images/profile.jpg' %}" alt="">
-		</div>
-		<p class="profile__username">${userData.username}</p>
-	</div>
 	<div class="profile__details">
 		<div class="profile__details__email">
 			<strong>Email</strong>
@@ -33,6 +32,5 @@ container.insertAdjacentHTML(
 		</div>
 	</div>
 	</div>
-	<a href=${window.location.href + "edit/"} class="main__redirect"><button>Edit profile</button></a>
 `
 );
