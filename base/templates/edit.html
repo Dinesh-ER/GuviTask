@@ -1,34 +1,58 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %} Home {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/edit.css'%}">
+{% endblock %}
 
 {% block scripts %}
 <script>
 	const userData = JSON.parse("{{userData|escapejs}}".replaceAll("\'", "\"").replaceAll("None", null));
-	console.log(userData)
-
-	const form = document.querySelector("#form")
-	const cancel = document.querySelector("#cancel")
-	form.action = window.location.href.replace("edit/", "") + "save/"
-	cancel.href = window.location.href.replace("edit/", "")
-
 </script>
+
+<script src="{% static 'js/edit.js'%}"></script>
 {% endblock %}
+
 
 {% block content %}
 <div class="content">
-	<div class="card">
-		<form id="form" method="POST">
+	<h1 class="title">Edit Profile</h1>
+	<div class="main">
+		<div class="profile__photo-wrap">
+			<div class="profile__photo">
+				<img src="{% static 'assets/images/profile.jpg' %}" alt="">
+			</div>
+			<p class="profile__username">Carbine</p>
+		</div>
+		<form class="edit__form" id="edit" method="POST">
 			{% csrf_token %}
-			Username: <input type="text" name="username">
-			Email: <input type="email" name="email">
-			Contact: <input type="text" name="contact">
-			DOB: <input type="date" name="dob">
-			Country: <input type="text" name="country">
-			<a id="cancel">Cancel</a>
-			<button type="submit">Save</button>
+			<div class="edit__form__input">
+				<span class="edit__form__input__warning"></span>
+				<input type="email" name="email" class="edit__form__input__field" autocomplete="off" required />
+				<label class="edit__form__input__label">Email</label>
+			</div>
+			<div class="edit__form__input">
+				<span class="edit__form__input__warning"></span>
+				<input type="text" name="contact" class="edit__form__input__field" autocomplete="off" required />
+				<label class="edit__form__input__label">Contact</label>
+			</div>
+			<div class="edit__form__input">
+				<span class="edit__form__input__warning"></span>
+				<input type="text" name="dob" class="edit__form__input__field" autocomplete="off" required />
+				<label class="edit__form__input__label">DOB</label>
+			</div>
+			<div class="edit__form__input">
+				<span class="edit__form__input__warning"></span>
+				<input type="text" name="country" class="edit__form__input__field" autocomplete="off" required />
+				<label class="edit__form__input__label">Country</label>
+			</div>
+			<div class="edit__form__buttons">
+				<a class="edit__form__cancel"><button type="button">Cancel</button></a>
+				<a class="edit__form__save"><button>Save</button></a>
+			</div>
 		</form>
 	</div>
-	<a href="/logout/"></a>
 </div>
 {% endblock %}
