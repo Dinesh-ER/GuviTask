@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import make_password, check_password
 import pymongo
 from decouple import config
 from .models import Users
-from time import sleep
+import datetime
 
 client = pymongo.MongoClient(config("HOST"))
 db = client['GuviTaskDB']['users']
@@ -109,15 +109,17 @@ def save_profile(request, username):
 	
 	if request.method == 'POST':
 		content = {
-			'username': request.POST['username'],
 			"email": request.POST['email'],
 			"contact": request.POST['contact'],
-			"dob": request.POST['dob'],
+			"dob": datetime.datetime.strptime(request.POST['dob'], '%Y-%m-%d').strftime('%m/%d/%Y'),
 			"country": request.POST['country']
 		}
 		db.update_one({"username": username}, {"$set": content})
 		
 		return redirect('profile', username=username)
 
-
+def logout(request):
+    del request.session['auth']
+    del request.session['username']
+    return redirect('home')
 
