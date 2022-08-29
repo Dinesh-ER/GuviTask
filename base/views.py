@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 import pymongo
+import codecs
+import base64
 from decouple import config
+from dateutil.parser import parse
 from .models import Users
-import datetime
+from .utils import calculate_age
 
 client = pymongo.MongoClient(config("HOST"))
 db = client['GuviTaskDB']['users']
@@ -76,6 +79,8 @@ def profile(request, username):
 		return redirect('home')
 	
 	data = Users.objects.get(username=username)
+	base64_data = codecs.encode(data.photo, 'base64')
+	photo = base64_data.decode('utf-8') 
 	
 	context = {
 		"userData": {
@@ -84,10 +89,10 @@ def profile(request, username):
 			"contact": data.contact,
 			"dob": data.dob,
 			"age": data.age,
-			"country": data.country
-		}
+			"country": data.country,
+		},
+		"photo": photo
 	}
-	
 	return render(request, 'profile.html', context)
 
 def edit_profile(request, username):
@@ -111,9 +116,13 @@ def save_profile(request, username):
 		content = {
 			"email": request.POST['email'],
 			"contact": request.POST['contact'],
-			"dob": datetime.datetime.strptime(request.POST['dob'], '%Y-%m-%d').strftime('%m/%d/%Y'),
+			"dob": parse(request.POST['dob']).strftime('%m/%d/%Y'),
+   			"age":  calculate_age(parse(request.POST['dob'])),
 			"country": request.POST['country']
 		}
+
+		if len(request.FILES) != 0:
+			content['photo'] = request.FILES['photo'].read()
 		db.update_one({"username": username}, {"$set": content})
 		
 		return redirect('profile', username=username)
