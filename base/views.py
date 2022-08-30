@@ -29,7 +29,6 @@ def register(request):
 			'dob': '',
 			'age': None,
 			'country': '',
-			'is_verified': False
 		}
 		db.insert_one(content)
 		return redirect('login')  

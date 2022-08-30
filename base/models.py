@@ -14,7 +14,6 @@ class Users(models.Model):
     dob = models.CharField(max_length=12, blank=True)
     age = models.IntegerField(null=True)
     country = models.CharField(max_length=30, blank=True)
-    is_verified = models.BooleanField(default=True)
     photo = models.ImageField(null=True, blank=True, upload_to="photos", storage=grid_fs_storage)
     
     class Meta:
