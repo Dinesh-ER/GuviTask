@@ -1,10 +1,9 @@
 const container = document.querySelector(".profile");
 
+const usernameField = document.querySelector(".profile__username");
+usernameField.textContent = userData.username;
 
-const usernameField = document.querySelector(".profile__username")
-usernameField.textContent = userData.username
-
-document.querySelector(".edit-profile-btn").href = window.location.href + "edit/"
+document.querySelector(".edit-profile-btn").href = window.location.href + "edit/";
 
 container.insertAdjacentHTML(
 	"beforeend",
@@ -24,7 +23,7 @@ container.insertAdjacentHTML(
 		</div>
 		<div class="profile__details__age">
 			<strong>Age</strong>
-			<span>${userData.age}</span>
+			<span>${userData.age == null ? "" : userData.age}</span>
 		</div>
 		<div class="profile__details__country">
 			<strong>Country</strong>
