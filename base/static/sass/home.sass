@@ -9,15 +9,14 @@
 	order: 1
 
 	img
-		height: 31.25rem
 		width: 31.25rem
 
 .main
 	width: 100%
 	display: flex
 	flex-direction: column
+	justify-content: center
 	gap: 2rem
-	margin: 12rem auto
 	font-size: 1.25rem
 	color: var(--primary-600)
 	order: 2
@@ -52,9 +51,55 @@
 .credit
 	text-transform: none
 	position: absolute
-	bottom: 0
+	bottom: 2rem
 	width: 100%
 	text-align: center
 	color: var(--primary-400)
 	font-size: .75rem
 	font-weight: 600
+
+
+@media screen and (max-width: 77rem)
+	.content
+		display: flex
+		flex-direction: column
+
+	.hero
+		order: 2
+
+	.main
+		order: 1
+		margin: 3rem auto
+		align-items: center
+
+		&__links
+			margin-left: 0
+
+	.hero img
+		width: 28rem
+
+
+@media screen and (max-width: 48rem)
+	html
+		font-size: 12px
+
+	.content
+		justify-content: center
+
+	.main
+		margin: 2rem auto
+
+	.hero img
+		width: 25rem
+		
+
+@media screen and (max-width: 30rem)
+	html
+		font-size: 8px
+
+	.main__title
+		text-align: center
+
+	.hero img
+		width: 30rem
+
