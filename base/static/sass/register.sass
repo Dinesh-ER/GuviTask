@@ -9,7 +9,6 @@
 	order: 1
 
 	img
-		height: 31.25rem
 		width: 31.25rem
 
 .main
@@ -76,7 +75,6 @@
 				margin-top: .25rem
 				color: var(--warning-100)
 
-
 		&__submit-wrap
 			margin: 2rem 0
 			text-align: center
@@ -107,5 +105,16 @@
 				font-weight: 700
 				color: var(--primary-800)
 
+@media screen and (max-width: 77rem)
+	.main
+		align-items: center
 
+@media screen and (max-width: 62.5rem)
+	.hero img
+		width: 25rem
 
+@media screen and (max-width: 48rem)
+	.content
+		display: block
+	.hero img
+		display: none

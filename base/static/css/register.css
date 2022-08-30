@@ -10,7 +10,6 @@
   order: 1;
 }
 .hero img {
-  height: 31.25rem;
   width: 31.25rem;
 }
 
@@ -107,4 +106,23 @@
   text-decoration: none;
   font-weight: 700;
   color: var(--primary-800);
+}
+
+@media screen and (max-width: 77rem) {
+  .main {
+    align-items: center;
+  }
+}
+@media screen and (max-width: 62.5rem) {
+  .hero img {
+    width: 25rem;
+  }
+}
+@media screen and (max-width: 48rem) {
+  .content {
+    display: block;
+  }
+  .hero img {
+    display: none;
+  }
 }
