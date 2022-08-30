@@ -1,4 +1,4 @@
-const dateInput = document.querySelectorAll("input")[3];
+const dateInput = document.querySelectorAll("input")[4];
 const cancelBtn = document.querySelector(".edit__form__cancel");
 const saveBtn = document.querySelector(".edit__form__save");
 const form = document.querySelector(".edit__form");
