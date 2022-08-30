@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 import pymongo
 import codecs
-import base64
 from decouple import config
 from dateutil.parser import parse
 from .models import Users
