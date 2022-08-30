@@ -1,3 +1,7 @@
+html {
+  overflow: visible;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -16,8 +20,9 @@
 
 .main {
   display: grid;
-  grid-template-columns: 40% 60%;
-  width: 70%;
+  grid-template-columns: 30% 70%;
+  gap: 5rem;
+  justify-content: center;
   margin: 3rem auto;
   margin-bottom: 0rem;
   order: 2;
@@ -29,12 +34,53 @@
   text-align: center;
   font-weight: 600;
   letter-spacing: 5px;
+  font-size: 2rem;
+}
+.main .profile__photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.main .profile__photo {
+  overflow: hidden;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.main .profile__photo img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.25s;
+}
+.main .profile__photo img:hover {
+  cursor: pointer;
+}
+.main .profile__photo__edit {
+  display: none;
+  position: absolute;
+  font-size: 1.25rem;
+  color: #fff;
+}
+.main .profile__photo__edit:hover {
+  cursor: pointer;
+}
+.main .profile__username {
+  font-size: 1.5rem;
 }
 .main .edit__form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 65%;
+  margin-bottom: 2rem;
 }
 .main .edit__form__input {
   display: flex;
@@ -98,40 +144,22 @@
   color: #fff;
 }
 
-.profile__photo-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
+@media screen and (max-width: 56.25rem) {
+  html {
+    font-size: 12px;
+  }
 }
-.profile__photo {
-  overflow: hidden;
-  height: 15rem;
-  width: 15rem;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 41.875rem) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
 }
-.profile__photo img {
-  display: block;
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: all 0.25s;
-}
-.profile__photo img:hover {
-  cursor: pointer;
-}
-.profile__photo__edit {
-  display: none;
-  position: absolute;
-  font-size: 1.25rem;
-  color: #fff;
-}
-.profile__photo__edit:hover {
-  cursor: pointer;
+@media screen and (max-width: 23.45rem) {
+  html {
+    font-size: 10px;
+  }
 }
