@@ -97,6 +97,8 @@ def profile(request, username):
 
 def edit_profile(request, username):
 	data = Users.objects.get(username=username)
+	base64_data = codecs.encode(data.photo, 'base64')
+	photo = base64_data.decode('utf-8') 
 	
 	context = {
 		"userData": {
@@ -106,7 +108,8 @@ def edit_profile(request, username):
 			"dob": data.dob,
 			"age": data.age,
 			"country": data.country
-		}
+		},
+		"photo": photo
 	}
 	return render(request, 'edit.html', context)
 
