@@ -25,7 +25,11 @@
 		<div class="profile">
 			<div class="profile__photo-wrap">
 				<div class="profile__photo">
-					<img src="data:image/png;base64, {{photo}}" alt="">
+					{% if photo %}
+						<img src="data:image/png;base64, {{photo}}" alt="">
+					{% else %}
+						<img src="{% static 'assets/images/avatar.svg' %}" alt="">
+					{% endif %}
 				</div>
 				<p class="profile__username"></p>
 			</div>

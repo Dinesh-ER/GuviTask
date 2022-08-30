@@ -79,8 +79,6 @@ def profile(request, username):
 		return redirect('home')
 	
 	data = Users.objects.get(username=username)
-	base64_data = codecs.encode(data.photo, 'base64')
-	photo = base64_data.decode('utf-8') 
 	
 	context = {
 		"userData": {
@@ -91,14 +89,16 @@ def profile(request, username):
 			"age": data.age,
 			"country": data.country,
 		},
-		"photo": photo
 	}
+	if data.photo:
+		base64_data = codecs.encode(data.photo, 'base64')
+		photo = base64_data.decode('utf-8') 
+		context['photo'] = photo
+
 	return render(request, 'profile.html', context)
 
 def edit_profile(request, username):
 	data = Users.objects.get(username=username)
-	base64_data = codecs.encode(data.photo, 'base64')
-	photo = base64_data.decode('utf-8') 
 	
 	context = {
 		"userData": {
@@ -108,9 +108,12 @@ def edit_profile(request, username):
 			"dob": data.dob,
 			"age": data.age,
 			"country": data.country
-		},
-		"photo": photo
+		}
 	}
+	if data.photo:
+		base64_data = codecs.encode(data.photo, 'base64')
+		photo = base64_data.decode('utf-8') 
+		context['photo'] = photo
 	return render(request, 'edit.html', context)
 
 def save_profile(request, username):
