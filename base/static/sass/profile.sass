@@ -12,7 +12,6 @@
 		height: 31.25rem
 		width: 31.25rem
 
-
 .main
 	display: flex
 	flex-direction: column
@@ -23,10 +22,18 @@
 	order: 2
 	color: var(--primary-600)
 
+	&__title
+		width: 65%
+		text-align: center
+		font-weight: 600
+		letter-spacing: 5px
+		font-size: 3rem
+		text-transform: uppercase
+
 	.profile
 		display: flex
 		align-items: center
-		gap:3rem
+		gap: 3rem
 		width: max-content
 
 		&__photo-wrap
@@ -40,7 +47,7 @@
 			height: 10rem
 			width: 10rem
 			border-radius: 50%
-			img 
+			img
 				display: block
 				height: 100%
 				width: 100%
@@ -64,15 +71,15 @@
 
 .logout
 	position: absolute
-	bottom: 0
+	text-align: left
+	bottom: 1rem
+	left: 1rem
 	margin: 1rem
 
 	button:hover
 		background: var(--warning-300)
 		color: #fff
 		border: none
-
-
 
 button
 	outline: none
@@ -89,4 +96,29 @@ button
 
 	&:hover
 		background: #000
-		color: #fff		
+		color: #fff
+
+@media screen and (max-width: 80rem)
+	.main
+		align-items: center
+
+		.profile
+			flex-direction: column
+
+@media screen and (max-width: 56.25rem)
+	.content
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+
+	.hero img
+		display: none
+
+@media screen and (max-width: 48rem)
+	html
+		font-size: 12px
+
+	.logout
+		left: auto
+
